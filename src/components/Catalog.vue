@@ -3,8 +3,8 @@ import { onMounted, ref } from "vue";
 import ProductItem from "./ProductItem.vue";
 import Search from "./Search.vue";
 import router from "../router/router.js";
-import { useStore } from '../stores'
-const store = useStore()
+import { useStore } from "../stores";
+const store = useStore();
 
 const productInCartList = ref([]);
 const productList = ref([]);
@@ -23,31 +23,18 @@ const logout = () => {
   router.push("/");
 };
 const search = (filterPrice, filterProduct) => {
-  if (filterPrice && filterProduct) {
-    filteredProductList.value = filteredProductList.value.filter(
-      (product) =>
-        product.title.toLowerCase().includes(filterProduct) &&
-        +product.price === +filterPrice
-    );
-    return;
-  }
   if (filterPrice) {
     filteredProductList.value = filteredProductList.value.filter(
       (product) => +product.price === +filterPrice
     );
-    return;
   }
   if (filterProduct) {
     filteredProductList.value = filteredProductList.value.filter((product) =>
       product.title.toLowerCase().includes(filterProduct)
     );
-    return;
   }
-  filteredProductList.value = store.productList;
 };
-const addProduct = (product) => {
-
-};
+const addProduct = (product) => {};
 </script>
 
 <template>
